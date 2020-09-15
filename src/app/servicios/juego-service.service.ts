@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Juego } from '../clases/juego';
+//import { Juego } from '../clases/Juego';
 import { JuegoAdivina } from '../clases/juego-adivina';
-import { MiHttpService } from './mi-http/mi-http.service';
+import { MiHttpService } from './mi-http/mi-http.service'; 
 
 @Injectable()
 export class JuegoServiceService {
@@ -12,7 +12,7 @@ export class JuegoServiceService {
 //    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
   }
 
-  public listar(): Array<Juego> {
+  /*public listar(): Array<Juego> {
    this.miHttp.httpGetP("https://restcountries.eu/rest/v2/all")
     .then( data => {
       console.log( data );
@@ -20,8 +20,8 @@ export class JuegoServiceService {
     .catch( err => {
       console.log( err );
     });
-
-
+   
+  
     this.peticion
     .subscribe( data => {
       console.log("En listar");
@@ -61,6 +61,6 @@ export class JuegoServiceService {
     });
 
     return promesa;
-  }
+  }*/
 
 }

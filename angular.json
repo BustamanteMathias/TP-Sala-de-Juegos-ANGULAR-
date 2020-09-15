@@ -26,6 +26,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/font-awesome/css/font-awesome.css"
             ],
+            
             "scripts": []
           },
           "configurations": {
@@ -139,8 +140,5 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }
