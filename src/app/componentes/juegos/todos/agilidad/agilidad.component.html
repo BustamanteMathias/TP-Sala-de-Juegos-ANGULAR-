@@ -1,0 +1,35 @@
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/jellee-typeface" type="text/css" />
+
+<div class="container">
+  <div class="mensaje" id="mensajeAritmetica" style="display: none;"></div>
+  <form name="juego">
+
+    <button mat-fab color="basic" style="width: 250px; height: 250px;" class="b1">
+      <p>{{operador1}}</p>
+    </button>
+    <button mat-fab color="primary" style="width: 250px; height: 250px">
+      <p>{{operando}}</p>
+    </button>
+    <button mat-fab color="basic" style="width: 250px; height: 250px" class="b2">
+      <p>{{operador2}}</p>
+    </button>
+
+    <br><br>
+    <button mat-fab color="primary" style="width: 65px; height: 65px">
+      <p>=</p>
+    </button>
+    <br><br>
+
+    <p><input id="resultado" [(ngModel)]="this.resultadoIngresado" name="numeroIngresado" type="number"
+        style="width:20%" /></p>
+
+    <h2 [hidden]="!ocultarVerificar">
+      <button mat-raised-button color="primary" matBadgeColor="accent" (click)="NuevoJuego()">COMENZAR</button>
+    </h2>
+
+    <h2 [hidden]="ocultarVerificar">
+      <button mat-raised-button color="primary" matBadge={{Tiempo}} matBadgePosition="after" matBadgeSize="large"
+        matBadgeColor="accent" (click)="verificar()">TU TIEMPO</button>
+    </h2>
+  </form>
+</div>

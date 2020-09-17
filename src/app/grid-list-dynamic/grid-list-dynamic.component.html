@@ -1,0 +1,118 @@
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/clayborn" type="text/css" />
+
+<div class="contenedorJuegos">
+  <mat-grid-list cols="5" rowHeight="200px">
+    <!--JUEGO UNO-->
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
+      <div class="contenedorItems-1">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig" >
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">TA - TE - TI</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Tateti")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO DOS-->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <div class="contenedorItems-2">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">AGILIDAD ARITMETICA</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)="Ir('AgilidadAritmetica')">videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO TRES-->
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <div class="contenedorItems-3">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">DEFIENDE AL POLLO</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("MiJuego")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO CUATRO-->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <div class="contenedorItems-4">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">ADIVINA EL NUMERO</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("AdivinaNumero")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO CINCO-->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="contenedorItems-5">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">ANAGRAMA</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Anagrama")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO SEIS-->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <div class="contenedorItems-6">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">PIEDRA - PAPEL - TIJERA</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("PPT")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <!--JUEGO SIETE-->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="contenedorItems-7">
+        <div class="contenedorBotones">
+          <div class="contenedorBotConfig">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Configuracion")'>settings</mat-icon>
+          </div>
+          <div class="tituloJuego">
+            <p style="margin-top: 13px; ">MEMOTEST</p>
+          </div>
+          <div class="contenedorBotJugar">
+            <mat-icon style="font-size: 50px;" (click)='Ir("Memotest")'>videogame_asset</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

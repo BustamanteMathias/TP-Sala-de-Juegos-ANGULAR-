@@ -1,12 +1,20 @@
-<div class="panel panel-default">
-  <div class="hero-text">
-      <h1 style="font-size:50px">Sala de Juegos</h1>
-      <p>Octavio villegas</p>
-      <a href="https://github.com/octaviovillegas"target="_blank">en GitHub <i class="fa fa-github"></i></a>
-      <a  routerLink="/QuienSoy" >Quien Soy? <i class="fa fa-user"></i></a>
-  </div>
-  <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/Registro"><span class="glyphicon glyphicon-user"></span>Registrarse</a></li>
-          <li><a  routerLink="/Login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
-  </ul>
-</div>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/patchwork" type="text/css"/>
+
+<p>
+  <mat-toolbar class="toolBar-1">
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/Login">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <span routerLink="/Login"> SALIR</span>
+  <span class="example-spacer"></span>
+  <span routerLink="/QuienSoy"> QUIÉN SOY</span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/QuienSoy">
+    <mat-icon>face</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-toolbar class="toolBar-2">
+  <p>SALA DE JUEGOS</p>
+</mat-toolbar>
+</p>
+

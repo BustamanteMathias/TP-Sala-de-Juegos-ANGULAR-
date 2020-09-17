@@ -1,13 +1,21 @@
-.imagenDeMenu{
-width: 80px;
-height: 70px;
+.contenedorMenu{
+  border-style: solid;
+  border-color: #773AF0;
+  background-color: rgba(245, 245, 245, 0.63);
+  height: 75%;
 }
 
-.hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #100000;
-    }
+.contenedor{
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+mat-card, .cardContenedor{
+  height: 480px;
+  border-style: solid;
+  border-color: #e40098;
+  background-color: rgba(255, 0, 221, 0.308);
+}

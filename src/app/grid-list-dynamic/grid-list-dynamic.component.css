@@ -1,0 +1,162 @@
+.contenedorJuegos {
+  position: relative;
+  top: 8vh;
+  width: 90%;
+  left: 5%;
+}
+
+
+.contenedorBotones {
+  position: relative;
+  background-color: white;
+  height: 50px;
+  margin-top: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.contenedorBotConfig {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.contenedorBotConfig :hover{
+  transform:scale(2.05);
+}
+
+.contenedorBotJugar {
+  position: absolute;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.contenedorBotJugar :hover{
+  transform:scale(1.55);
+}
+
+.tituloJuego {
+  text-align: center;
+  position: absolute;
+  width: 58%;
+  margin-top: 3px;
+  height: 44px;
+  margin-left: 21%;
+  margin-right: 21%;
+}
+
+p {
+  font-family: 'ClaybornRegular';
+  font-style: normal;
+  font-size: 3vh;
+  transition: 0.5s;
+}
+
+p:hover{
+color: tomato;
+cursor: default;
+transform:scale(1.1);
+}
+
+.contenedorItems-1 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color:rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/Tateti.png") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-1:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-2 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/aritmetica.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-2:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-3 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/pollo.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-3:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-4 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/adivina.png") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-4:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-5 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/sopa.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-5:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-6 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/ppt.png") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-6:hover{
+  border-color: rgb(255, 0, 255);
+}
+
+.contenedorItems-7 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-color: rgba(255, 0, 221, 0.253);
+  background: url("../../assets/imagenes/memotest.png") no-repeat center center;
+  background-size: cover;
+}
+
+.contenedorItems-7:hover{
+  border-color: rgb(255, 0, 255);
+}

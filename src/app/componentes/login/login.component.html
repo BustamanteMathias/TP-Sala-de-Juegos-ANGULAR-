@@ -1,57 +1,61 @@
-<!--div style="margin: 20% auto; width: 30%;">
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
-    </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
-    </div>
-  </div>
-  <div class="row" style="margin-top: 5px">
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" style="text-align: center; margin-top: 10px">
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div-->
- <div class="container" >
-  <div class="jumbotron" style="padding:50px;">
-    <form action="return true;">
-      <div class="imgcontainer">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-      </div>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/patchwork" type="text/css"/>
 
-      <div class="container">
-        <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-            
-        <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
-       
-        <div *ngIf="!logeando" class="progress">
-            <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
-              {{progresoMensaje}} - {{progreso}}%
-            </div>
-        </div>
-       
-        <input type="checkbox" checked="checked"> Recordar mis datos
-      </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
-        <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
-        <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-      </div>
-     
-    </form>
-  </div>
+<div style="margin-top: 70px;">
+  <mat-toolbar class="toolBar-2">
+    <p>SALA DE JUEGOS</p>
+  </mat-toolbar>
 </div>
+
+<mat-grid-list cols="1" rowHeight="700px">
+  <mat-grid-tile >
+    <mat-card class="componenteLogin">
+      <h2><strong>BIENVENIDO!</strong></h2>
+      <mat-tab-group animationDuration="2000ms">
+        <!-- LOGIN -->
+        <mat-tab label="LOGIN">
+          <br><strong>INGRESAR</strong><br>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ingrese correo" value="" type="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Ingrese contraseña" value="" type="password">
+            </mat-form-field>
+          </form>
+
+          <div class="example-button-row">
+            <br>
+            <button mat-stroked-button routerLink="/Principal"><strong>CONTINUAR</strong></button>
+          </div>
+        </mat-tab>
+        <!-- REGISTER -->
+        <mat-tab label="REGISTER">
+          <br><strong>COMPLETAR</strong><br>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ingrese correo" value="" type="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder= "Ingrese contraseña" value="" type="password">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Re-Password</mat-label>
+              <input matInput placeholder="Re-Ingrese contraseña" value="" type="password">
+            </mat-form-field>
+          </form>
+
+          <div class="example-button-row">
+            <br>
+            <button mat-stroked-button routerLink="/Principal"><strong>REGISTRARSE</strong></button>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

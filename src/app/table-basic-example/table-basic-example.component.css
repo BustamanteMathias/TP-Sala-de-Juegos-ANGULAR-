@@ -1,0 +1,18 @@
+table {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  right: 10%;
+  top: 25%;
+  background-color: rgba(255, 0, 255, 0.103);
+  border-style: solid;
+  border-color: rgb(255, 0, 255);
+}
+
+strong{
+  font-size: 2.3vh;
+  color: rgb(255, 255, 255);
+}
+p{
+  color: white;
+}

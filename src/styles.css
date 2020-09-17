@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mainContenedor{
+  background: url("./assets/imagenes/fondoMenu1.jpg");
+  background-position: cover;
+  background-size: cover;
+}
