@@ -101,13 +101,13 @@ export class PptComponent implements OnInit {
   VerificarGanador() {
     if (this.intentosJugador == 3) {
       setTimeout(() => {
-        this.mensaje = "¡FELICITACIONES, SOS MEJOR QUE LA MAQUINA!";
+        this.mensaje = "¡FELICITACIONES! GANASTE MAQUINA!";
         this.visibleJuego = true;
         this.visibleResultado = false;
       }, 600);
     } else if (this.intentosMaquina == 3) {
       setTimeout(() => {
-        this.mensaje = "PERDISTE, LA MAQUINA ES MEJOR QUE VOS!";
+        this.mensaje = "PERDISTE! PICHON";
         this.visibleJuego = true;
         this.visibleResultado = false;
       }, 600);

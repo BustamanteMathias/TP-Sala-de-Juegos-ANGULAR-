@@ -5,6 +5,21 @@
 
 }
 
+p {
+  font-family: 'JelleeBold';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 4em;
+}
+
+p, .intentos{
+color: white;
+}
+
+.btnComenzar{
+  position: relative;
+  top: 21%;
+}
 
 .cnt-memotest {
   width: 100vw;
@@ -27,7 +42,6 @@
 
 .cnt-juego-memotest {
   text-align: center;
-  background: rgba(0, 0, 0, .5);
   position: absolute;
   top: 50%;
   width: 70vw;
@@ -46,7 +60,7 @@ button {
 
 .cnt-tablero-memotest {
   position: relative;
-  top: -10%;
+  top: 10%;
   text-align: center;
   background: red(0, 0, 0, .5);
   width: 100%;
@@ -78,97 +92,106 @@ h2 {
 }
 
 .casilla_0 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_1,
 .casilla_2 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_3 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_4 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_5,
 .casilla_6 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_7 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_8 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_9,
 .casilla_10 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .casilla_11 {
-  border-left: 3px solid #C5EDF4;
-  border-right: 3px solid #C5EDF4;
-  border-top: 3px solid #C5EDF4;
-  border-bottom: 3px solid #C5EDF4;
+  border-left: 3px solid #ff009d;
+  border-right: 3px solid #ff009d;
+  border-top: 3px solid #ff009d;
+  border-bottom: 3px solid #ff009d;
+  background-color: indigo;
 }
 
 .f_0 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo1.png");
   background-size: 100% 100%;
 }
 
 .f_1 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo2.png");
   background-size: 100% 100%;
 }
 
 .f_2 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo3.png");
   background-size: 100% 100%;
 }
 
 .f_3 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo4.png");
   background-size: 100% 100%;
 }
 
 .f_4 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo5.png");
   background-size: 100% 100%;
 }
 
 .f_5 {
-  background-image: url("../../../../../assets/imagenes/quiensoy1.png");
+  background-image: url("../../../../../assets/imagenes/memo6.png");
   background-size: 100% 100%;
 }
