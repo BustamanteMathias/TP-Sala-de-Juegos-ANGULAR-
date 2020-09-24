@@ -1,1 +1,22 @@
-<p>mijuego works!</p>
+<div>
+  <div class="padre">
+    <div class="slotNPC" [ngStyle]="{'background-image': 'url(' + spriteN1 + ')'}"><p>SLOT 1 DE NPC</p></div>
+    <div class="slotNPC" [ngStyle]="{'background-image': 'url(' + spriteN2 + ')'}"><p>SLOT 2 DE NPC</p></div>
+    <div class="slotNPC" [ngStyle]="{'background-image': 'url(' + spriteN3 + ')'}"><p>SLOT 3 DE NPC</p></div>
+  </div>
+  <div class="padre">
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectNPC_R1 + ')'}"><p>{{estadoNPC_RONDA1}}</p></div>
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectNPC_R2 + ')'}"><p>{{estadoNPC_RONDA2}}</p></div>
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectNPC_R3 + ')'}"><p>{{estadoNPC_RONDA3}}</p></div>
+  </div>
+  <div class="padre">
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectJUG_R1 + ')'}"><p>{{estadoJUG_RONDA1}}</p></div>
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectJUG_R2 + ')'}"><p>{{estadoJUG_RONDA2}}</p></div>
+    <div class="slotVacio" [ngStyle]="{'background-image': 'url(' + selectJUG_R3 + ')'}"><p>{{estadoJUG_RONDA3}}</p></div>
+  </div>
+  <div class="padre">
+    <div class="hijo" [ngStyle]="{'background-image': 'url(' + spriteJ1 + ')'}" (click)="Partida('j1')"><p>{{j1.numero}} de {{j1.tipo}}</p></div>
+    <div class="hijo" [ngStyle]="{'background-image': 'url(' + spriteJ2 + ')'}" (click)="Partida('j2')"><p>{{j2.numero}} de {{j2.tipo}}</p></div>
+    <div class="hijo" [ngStyle]="{'background-image': 'url(' + spriteJ3 + ')'}" (click)="Partida('j3')"><p>{{j3.numero}} de {{j3.tipo}}</p></div>
+  </div>
+</div>
