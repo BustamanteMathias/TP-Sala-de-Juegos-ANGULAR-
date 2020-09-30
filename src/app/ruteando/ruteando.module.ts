@@ -12,7 +12,7 @@ import { JugadoresListadoComponent } from "../componentes/jugadores-listado/juga
 
 //JUEGOS
 import { AdivinaElNumeroComponent } from "../componentes/adivina-el-numero/adivina-el-numero.component";
-import { AnagramaComponent } from "../componentes/juegos/todos/anagrama/anagrama.component";
+import { AnagramaComponent } from "../componentes/anagrama/anagrama.component";
 import { PptComponent } from "../componentes/juegos/todos/ppt/ppt.component";
 import { AgilidadComponent } from "../componentes/juegos/todos/agilidad/agilidad.component";
 import { TatetiComponent } from "../componentes/juegos/todos/tateti/tateti.component";
@@ -22,7 +22,7 @@ import { MijuegoComponent } from "../componentes/juegos/todos/mijuego/mijuego.co
 //RUTAS
 const MiRuteo = [
   { path: "Jugadores", component: JugadoresListadoComponent },
-  { path: "", component: PrincipalComponent },
+  { path: "", redirectTo: 'Login', pathMatch: 'full'},
   { path: "Login", component: LoginComponent },
   { path: "QuienSoy", component: QuienSoyComponent },
   { path: "Registro", component: RegistroComponent },

@@ -53,6 +53,22 @@ import { PptComponent } from './componentes/juegos/todos/ppt/ppt.component';
 import { MemotestComponent } from './componentes/juegos/todos/memotest/memotest.component';
 import { MijuegoComponent } from './componentes/juegos/todos/mijuego/mijuego.component';
 
+//FIREBASE
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { FirebaseService } from "./misServicios/firebase.service";
+const firebaseConfig = {
+  apiKey: "AIzaSyBUqQhgb1fu-ajSTQm4GqPtgnRqJljnTxg",
+  authDomain: "appprueba-pps.firebaseapp.com",
+  databaseURL: "https://appprueba-pps.firebaseio.com",
+  projectId: "appprueba-pps",
+  storageBucket: "appprueba-pps.appspot.com",
+  messagingSenderId: "843208328067",
+  appId: "1:843208328067:web:595860062dc356dc982cb6",
+  measurementId: "G-RCE1GM1RS6",
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,16 +105,19 @@ import { MijuegoComponent } from './componentes/juegos/todos/mijuego/mijuego.com
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     RuteandoModule,
     HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     }),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService,FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

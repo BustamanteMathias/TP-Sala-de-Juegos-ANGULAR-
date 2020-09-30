@@ -1,81 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { FirebaseService } from "../../misServicios/firebase.service";
+//MODELOS
+import { DbUsuarioDetalle } from "../../misModelos/db-usuario-detalle";
+import { DbUsuarioGeneral } from "../../misModelos/db-usuario-general";
 
-import {Subscription} from "rxjs";
-import { timer } from 'rxjs';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  private subscription: Subscription;
-  usuario = '';
-  clave= '';
-  progreso: number;
-  progresoMensaje="esperando..."; 
-  logeando=true;
-  ProgresoDeAncho:string;
+  email:string = "";
+  pass:string = "";
+  rePass:string = "";
+  msjErrorLogin:string = "";
+  msjErrorRegister:string = "";
+  constructor(private router: Router, private firebase: FirebaseService) {}
 
-  clase="progress-bar progress-bar-info progress-bar-striped ";
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) {
-      this.progreso=0;
-      this.ProgresoDeAncho="0%";
-
+  Ingresar(){
+    this.firebase.Login(this.email, this.pass).then((response) => {
+      this.router.navigate(["Principal"]);
+    },
+    (error: any) => {
+      this.msjErrorLogin = " " + error;
+    }
+  );
   }
 
-  ngOnInit() {
-  }
+  Registrarse(){
+    if(this.pass == this.rePass){
+      this.firebase.Register(this.email, this.pass).then((response) => {
+        this.firebase.GetCurrentUser().then((response)=>{
+          //INSERT EN FIREBASE
+          let uGeneral:DbUsuarioGeneral = new DbUsuarioGeneral();
+          let uDetalle:DbUsuarioDetalle = new DbUsuarioDetalle();
+          uGeneral.userEmail = this.email;
+          uGeneral.userID = response.uid;
+          uDetalle.userEmail = this.email;
+          uDetalle.userID = response.uid;
 
-  Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/Principal']);
+          this.firebase.Insert_UsuarioDetalle(uDetalle);
+          this.firebase.Insert_UsuarioGeneral(uGeneral);
+          //RUTEO
+          this.router.navigate(["Principal"]);
+        });
+      },
+      (error: any) => {
+        this.msjErrorRegister = " " + error;
+      }
+    );
+    }else{
+      this.msjErrorRegister = "Contraseñas no coinciden";
     }
   }
-  MoverBarraDeProgreso() {
-    
-    this.logeando=false;
-    this.clase="progress-bar progress-bar-danger progress-bar-striped active";
-    this.progresoMensaje="NSA spy..."; 
-    let _timer = timer(200, 50);
-    this.subscription = _timer.subscribe(t => {
-      console.log("inicio");
-      this.progreso=this.progreso+1;
-      this.ProgresoDeAncho=this.progreso+20+"%";
-      switch (this.progreso) {
-        case 15:
-        this.clase="progress-bar progress-bar-warning progress-bar-striped active";
-        this.progresoMensaje="Verificando ADN..."; 
-          break;
-        case 30:
-          this.clase="progress-bar progress-bar-Info progress-bar-striped active";
-          this.progresoMensaje="Adjustando encriptación.."; 
-          break;
-          case 60:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando Info del dispositivo..";
-          break;
-          case 75:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando claves facebook, gmail, chats..";
-          break;
-          case 85:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Instalando KeyLogger..";
-          break;
-          
-        case 100:
-          console.log("final");
-          this.subscription.unsubscribe();
-          this.Entrar();
-          break;
-      }     
-    });
-    //this.logeando=true;
-  }
-
 }

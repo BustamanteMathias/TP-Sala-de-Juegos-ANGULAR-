@@ -1,4 +1,4 @@
-<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/patchwork" type="text/css"/>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/patchwork" type="text/css" />
 
 <div style="margin-top: 70px;">
   <mat-toolbar class="toolBar-2">
@@ -7,52 +7,53 @@
 </div>
 
 <mat-grid-list cols="1" rowHeight="700px">
-  <mat-grid-tile >
+  <mat-grid-tile>
     <mat-card class="componenteLogin">
       <h2><strong>BIENVENIDO!</strong></h2>
       <mat-tab-group animationDuration="2000ms">
         <!-- LOGIN -->
-        <mat-tab label="LOGIN">
+        <mat-tab label="YA TIENES CUENTA?">
           <br><strong>INGRESAR</strong><br>
           <form class="example-form">
             <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="Ingrese correo" value="" type="email">
+              <mat-label>Correo</mat-label>
+              <input matInput placeholder="Ingrese correo" name="email" type="email" [(ngModel)]="email">
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-              <mat-label>Password</mat-label>
-              <input matInput placeholder="Ingrese contraseña" value="" type="password">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Ingrese contraseña" name="pass" type="password" [(ngModel)]="pass">
             </mat-form-field>
           </form>
 
           <div class="example-button-row">
             <br>
-            <button mat-stroked-button routerLink="/Principal"><strong>CONTINUAR</strong></button>
+            <button mat-stroked-button (click)="Ingresar()"><strong>CONTINUAR</strong></button>
+            <span>{{this.msjErrorLogin}}</span>
           </div>
         </mat-tab>
         <!-- REGISTER -->
-        <mat-tab label="REGISTER">
+        <mat-tab label="REGISTRARSE">
           <br><strong>COMPLETAR</strong><br>
           <form class="example-form">
             <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="Ingrese correo" value="" type="email">
+              <mat-label>Correo</mat-label>
+              <input matInput placeholder="Ingrese correo" type="email" name="email" [(ngModel)]="email">
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width">
-              <mat-label>Password</mat-label>
-              <input matInput placeholder= "Ingrese contraseña" value="" type="password">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Ingrese contraseña" type="password" name="pass" [(ngModel)]="pass">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <mat-label>Re-Password</mat-label>
-              <input matInput placeholder="Re-Ingrese contraseña" value="" type="password">
+              <mat-label>Repita su contraseña</mat-label>
+              <input matInput placeholder="Re-Ingrese contraseña" type="password" name="repass" [(ngModel)]="rePass">
             </mat-form-field>
           </form>
 
           <div class="example-button-row">
             <br>
-            <button mat-stroked-button routerLink="/Principal"><strong>REGISTRARSE</strong></button>
+            <button mat-stroked-button (click)="Registrarse()"><strong>REGISTRARSE</strong></button><span>{{this.msjErrorRegister}}</span>
           </div>
         </mat-tab>
       </mat-tab-group>

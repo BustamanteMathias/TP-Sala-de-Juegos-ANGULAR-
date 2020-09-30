@@ -63,10 +63,8 @@ export class PptComponent implements OnInit {
       switch (this.jugadaJugador) {
         case "Piedra":
           if (this.jugadaMaquina == "Tijera") {
-            console.log("Ganaste");
             this.intentosJugador++;
           } else {
-            console.log("Perdiste");
             this.intentosMaquina++;
           }
 
@@ -75,10 +73,8 @@ export class PptComponent implements OnInit {
 
         case "Papel":
           if (this.jugadaMaquina == "Piedra") {
-            console.log("Ganaste");
             this.intentosJugador++;
           } else {
-            console.log("Perdiste");
             this.intentosMaquina++;
           }
           this.VerificarGanador();
@@ -86,10 +82,8 @@ export class PptComponent implements OnInit {
 
         case "Tijera":
           if (this.jugadaMaquina == "Papel") {
-            console.log("Ganaste");
             this.intentosJugador++;
           } else {
-            console.log("Perdiste");
             this.intentosMaquina++;
           }
           this.VerificarGanador();

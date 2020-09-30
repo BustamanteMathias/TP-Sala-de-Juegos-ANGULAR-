@@ -1,9 +1,11 @@
-<div class="container">
-  <div class="containerAnagrama">
-    <h1 class="palabraRandom" id="palabraAnagrama">HAGA CLICK PARA COMENZAR</h1>
-    <input type="text" placeholder="Ingrese la palabra pensada" ([ngModel])="this.palabraIngresada">
-    <h2 id="mensajeAnagrama"></h2>
+<div class="pantalla">
+  <div class="contenedor">
+    <div class="contenido">
+      <h1 style="text-align: center;">ANAGRAMA</h1>
+      <p>Adivine la palabra</p>
+      <h1>{{palabraAdivinar}}</h1><br><br>
+      <input type="text">
+      <button (click)="Verificar()">VERIFICAR</button>
+    </div>
   </div>
-  <button *ngIf="!comenzado" (click)="comenzar()">COMENZAR</button>
-  <button *ngIf="comenzado" (click)="verificar()">VERIFICAR</button>
 </div>

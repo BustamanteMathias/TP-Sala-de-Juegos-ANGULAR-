@@ -1,3 +1,13 @@
-<p>
-  anagrama works!
-</p>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/jellee-typeface" type="text/css" />
+
+<div class="container">
+  <div class="containerAnagrama">
+    <h1 class="palabraRandom" id="palabraAnagrama">HAGA CLICK PARA COMENZAR</h1>
+    <input type="text" placeholder="SU PALABRA" [(ngModel)]="this.palabraIngresada">
+    <div class="mensaje" id="claseMensaje">
+      <h2 id="mensajeAnagrama"></h2>
+    </div>
+  </div>
+  <button *ngIf="!comenzado" (click)="comenzar()">COMENZAR</button>
+  <button *ngIf="comenzado" (click)="verificar()">VERIFICAR</button>
+</div>
