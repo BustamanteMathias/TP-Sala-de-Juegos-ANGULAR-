@@ -34,6 +34,9 @@ export class FirebaseService {
     );
   }
 
+  ActualizarListas(){
+
+  }
   // MANEJADOR BASE DE DATOS USUARIOS
   GetUsuariosDetalle() {
     return (this.listaUsuariosDetalle = this._database.list("usuariosDetalle"));

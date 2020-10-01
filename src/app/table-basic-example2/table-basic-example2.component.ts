@@ -4,7 +4,6 @@ import { FirebaseService } from "../misServicios/firebase.service";
 import { DbUsuarioGeneral } from "../misModelos/db-usuario-general";
 import { Router } from "@angular/router";
 
-const ELEMENT_DATA: any[] = [];
 
 @Component({
   selector: "app-table-basic-example2",
@@ -17,7 +16,7 @@ export class TableBasicExample2Component implements OnInit {
   dataSource: any;
   listaUsuarios: any[];
 
-
+  ELEMENT_DATA: any[] = [{}];
 
   constructor(private firebase: FirebaseService, private router: Router) {
     this.firebase
@@ -27,14 +26,14 @@ export class TableBasicExample2Component implements OnInit {
         this.listaUsuarios = [];
         item.forEach((element) => {
           let x = element.payload.toJSON();
-          ELEMENT_DATA.push({
+          this.ELEMENT_DATA.push({
             num: this.contador++,
             cuenta: x["userEmail"],
             tGanadas: x["tGano"],
             tPerdidas: x["tPerdio"],
           });
         });
-        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+        this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       });
   }
 

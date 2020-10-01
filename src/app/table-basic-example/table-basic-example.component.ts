@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 import { FirebaseService } from "../misServicios/firebase.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { DbUsuarioGeneral } from "../misModelos/db-usuario-general";
-const ELEMENT_DATA: any[] = [];
+import { timeStamp } from 'console';
+
 
 /**
  * @title Basic use of `<table mat-table>`
@@ -18,9 +19,10 @@ export class TableBasicExampleComponent{
   dataSource: any;
   usuario: DbUsuarioGeneral = new DbUsuarioGeneral();
 
+  ELEMENT_DATA: any[] = [{}];
 
   constructor(private firebase: FirebaseService) {
-
+    console.log(this.firebase.listaDetalle);
     this.firebase.GetCurrentUser().then((response) => {
       this.firebase
         .GetUsuariosDetalle()
@@ -28,10 +30,9 @@ export class TableBasicExampleComponent{
         .subscribe((item) => {
           item.forEach((element) => {
             let x = element.payload.toJSON();
+            if (localStorage.getItem("uID") == x["userID"]) {
 
-            if (response.uid == x["userID"]) {
-
-              ELEMENT_DATA.push(
+              this.ELEMENT_DATA.push(
                 {
                   juego: "Adivina el número",
                   cGano: x["Gadivina"],
@@ -70,7 +71,7 @@ export class TableBasicExampleComponent{
               );
             }
           });
-          this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+          this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
         });
     });
   }
