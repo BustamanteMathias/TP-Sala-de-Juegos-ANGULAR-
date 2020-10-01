@@ -136,9 +136,7 @@ export class FirebaseService {
         this.Update_UsuarioDetalle(auxDetalle[0]);
         break;
       case "Tateti":
-        console.log(auxDetalle[0].Gtateti);
         auxDetalle[0].Gtateti = parseInt(auxDetalle[0].Gtateti) + 1;
-        console.log(auxDetalle[0]);
         this.Update_UsuarioDetalle(auxDetalle[0]);
         break;
       case "MiJuego":
@@ -179,7 +177,6 @@ export class FirebaseService {
       case "Tateti":
         auxDetalle[0].Ptateti = parseInt(auxDetalle[0].Ptateti) + 1;
         this.Update_UsuarioDetalle(auxDetalle[0]);
-        console.log("entre al perdi");
         break;
       case "MiJuego":
         auxDetalle[0].Pmijuego = parseInt(auxDetalle[0].Pmijuego) + 1;

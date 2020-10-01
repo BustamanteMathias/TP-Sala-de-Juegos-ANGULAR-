@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./table-basic-example2.component.css"],
 })
 export class TableBasicExample2Component implements OnInit {
-  contador: number = 0;
+  contador: number = 1;
   displayedColumns: string[] = ["num", "cuenta", "tGanadas", "tPerdidas"];
   dataSource: any;
   listaUsuarios: any[];
@@ -27,7 +27,7 @@ export class TableBasicExample2Component implements OnInit {
         item.forEach((element) => {
           let x = element.payload.toJSON();
           this.ELEMENT_DATA.push({
-            num: this.contador++,
+            num: (this.contador++).toString(),
             cuenta: x["userEmail"],
             tGanadas: x["tGano"],
             tPerdidas: x["tPerdio"],

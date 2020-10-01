@@ -9,14 +9,22 @@ export class AnagramaComponent implements OnInit {
   usuariosGeneral;
   palabraIngresada: string = "";
   palabraAdivinar: string;
-  palabras: string[] = ["uno", "dos", "tres"];
+  palabras: string[] = [
+    "amarillo",
+    "azul",
+    "verde",
+    "camino",
+    "negro",
+    "musica",
+    "arbol",
+  ];
   comenzado: boolean = false;
   gano: boolean;
   usuariosAnagrama;
   usuarioLogueado;
   mensaje: string;
 
-  constructor(private firebase:FirebaseService) {}
+  constructor(private firebase: FirebaseService) {}
 
   ngOnInit() {}
 
@@ -78,29 +86,10 @@ export class AnagramaComponent implements OnInit {
   }
 
   verificarNuevoAhorcado() {
-    let flag = false;
-
-    for (let usu of this.usuariosAnagrama) {
-      if (usu.usuario == this.usuarioLogueado) {
-        flag = true;
-        break;
-      }
-    }
+    let flag = true;
   }
 
-  modificarExistente(usuario) {
-    if (this.gano == true) {
-      usuario.gano++;
-    } else if (this.gano == false) {
-      usuario.perdio++;
-    }
-  }
+  modificarExistente(usuario?) {}
 
-  modificarUsuarioPuntaje(usuario) {
-    if (this.gano == true) {
-      usuario.gano++;
-    } else {
-      usuario.perdio++;
-    }
-  }
+  modificarUsuarioPuntaje(usuario?) {}
 }

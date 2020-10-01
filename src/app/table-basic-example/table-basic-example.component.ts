@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { FirebaseService } from "../misServicios/firebase.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { DbUsuarioGeneral } from "../misModelos/db-usuario-general";
-import { timeStamp } from 'console';
 
 
 /**
@@ -22,7 +21,6 @@ export class TableBasicExampleComponent{
   ELEMENT_DATA: any[] = [{}];
 
   constructor(private firebase: FirebaseService) {
-    console.log(this.firebase.listaDetalle);
     this.firebase.GetCurrentUser().then((response) => {
       this.firebase
         .GetUsuariosDetalle()

@@ -231,53 +231,21 @@ export class TatetiComponent implements OnInit {
 
   cambiarResultadoBD() {
     let flag = true;
-
-    for (let usu of this.usuariosTateti) {
-      if (usu.usuario == this.usuarioLogueado) {
-        this.modificarExistente(usu);
-        break;
-      }
-    }
   }
 
   verificarNuevoTateti() {
     let flag = true;
-
-    for (let usu of this.usuariosTateti) {
-      if (usu.usuario == this.usuarioLogueado) {
-        flag = true;
-        break;
-      }
-    }
-
-    if (!flag) {
-    }
   }
 
   cambiarResultadoUsuario() {
     let flag = false;
-
-    for (let usu of this.usuariosGeneral) {
-      if (usu.nombre == this.usuarioLogueado) {
-        this.modificarUsuarioPuntaje(usu);
-        break;
-      }
-    }
   }
 
   modificarExistente(usuario?) {
-    if (this.resultado == "¡VICTORIA!") {
-      usuario.gano++;
-    } else if (this.resultado == "¡DERROTA!") {
-      usuario.perdio++;
-    }
+
   }
 
   modificarUsuarioPuntaje(usuario?) {
-    if (this.resultado == "¡VICTORIA!") {
-      usuario.gano++;
-    } else if (this.resultado == "¡DERROTA!") {
-      usuario.perdio++;
-    }
+
   }
 }

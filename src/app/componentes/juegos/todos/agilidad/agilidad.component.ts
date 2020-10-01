@@ -17,7 +17,7 @@ export class AgilidadComponent implements OnInit {
   operando: any;
   operador2: any;
 
-  constructor(private firebase:FirebaseService) {
+  constructor(private firebase: FirebaseService) {
     this.juegoParado();
   }
 
@@ -42,7 +42,6 @@ export class AgilidadComponent implements OnInit {
     this.ocultarVerificar = false;
     this.repetidor = setInterval(() => {
       this.Tiempo--;
-      console.log("llego", this.Tiempo);
       if (this.Tiempo == 0) {
         clearInterval(this.repetidor);
         this.verificar();
@@ -159,54 +158,18 @@ export class AgilidadComponent implements OnInit {
   }
 
   verificarNuevoAgilidad() {
-    let flag = false;
-
-    for (let usu of this.usuariosAgilidad) {
-      if (usu.usuario == this.usuarioLogueado) {
-        flag = true;
-        break;
-      }
-    }
-
-    if (!flag) {
-    }
+    let flag = true;
   }
 
   cambiarResultadoBD() {
-    let flag = false;
-
-    for (let usu of this.usuariosAgilidad) {
-      if (usu.usuario == this.usuarioLogueado) {
-        this.modificarExistente(usu);
-        break;
-      }
-    }
+    let flag = true;
   }
 
   cambiarResultadoUsuario() {
-    let flag = false;
-
-    for (let usu of this.usuariosGeneral) {
-      if (usu.nombre == this.usuarioLogueado) {
-        this.modificarUsuarioPuntaje(usu);
-        break;
-      }
-    }
+    let flag = true;
   }
 
-  modificarExistente(usuario) {
-    if (this.gano == true) {
-      usuario.gano++;
-    } else if (this.gano == false) {
-      usuario.perdio++;
-    }
-  }
+  modificarExistente(usuario?) {}
 
-  modificarUsuarioPuntaje(usuario) {
-    if (this.gano == true) {
-      usuario.gano++;
-    } else {
-      usuario.perdio++;
-    }
-  }
+  modificarUsuarioPuntaje(usuario?) {}
 }

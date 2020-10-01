@@ -22,7 +22,7 @@ import { MijuegoComponent } from "../componentes/juegos/todos/mijuego/mijuego.co
 //RUTAS
 const MiRuteo = [
   { path: "Jugadores", component: JugadoresListadoComponent },
-  { path: "", redirectTo: 'Login', pathMatch: 'full'},
+  { path: "", redirectTo: "Login", pathMatch: "full" },
   { path: "Login", component: LoginComponent },
   { path: "QuienSoy", component: QuienSoyComponent },
   { path: "Registro", component: RegistroComponent },

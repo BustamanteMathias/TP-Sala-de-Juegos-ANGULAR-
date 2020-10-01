@@ -63,7 +63,6 @@ export class AdivinaElNumeroComponent implements OnInit {
         this.ayuda = this.nuevoJuego.retornarAyuda()
       );
     }
-    console.info("numero Secreto:", this.nuevoJuego.gano);
   }
 
   MostarMensaje(
@@ -82,7 +81,6 @@ export class AdivinaElNumeroComponent implements OnInit {
       x.className = x.className.replace("show", "");
       modelo.ocultarVerificar = false;
     }, 3000);
-    console.info("objeto", x);
   }
   ngOnInit() {}
 }
