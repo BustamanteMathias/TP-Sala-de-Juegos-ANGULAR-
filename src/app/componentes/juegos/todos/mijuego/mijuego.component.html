@@ -1,4 +1,6 @@
-<div>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/clayborn" type="text/css"/>
+
+<div *ngIf="mostrarJuego">
   <div class="padre">
     <div class="slotNPC" [ngStyle]="{'background-image': 'url(' + spriteN1 + ')'}"><p>SLOT 1 DE NPC</p></div>
     <div class="slotNPC" [ngStyle]="{'background-image': 'url(' + spriteN2 + ')'}"><p>SLOT 2 DE NPC</p></div>
@@ -19,4 +21,11 @@
     <div class="hijo" [ngStyle]="{'background-image': 'url(' + spriteJ2 + ')'}" (click)="Partida('j2')"><p>{{j2.numero}} de {{j2.tipo}}</p></div>
     <div class="hijo" [ngStyle]="{'background-image': 'url(' + spriteJ3 + ')'}" (click)="Partida('j3')"><p>{{j3.numero}} de {{j3.tipo}}</p></div>
   </div>
+</div>
+
+<div *ngIf="!mostrarJuego" class="pantallaFinal">
+  <p>{{msjResultado}}</p><br><br>
+
+  <button class="btn" (click)="Reiniciar()">VOLVER A JUGAR</button><br><br><br>
+  <button class="btn" routerLink="/Juegos">RETIRARSE</button>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
   selector: "app-ppt",
@@ -13,8 +14,9 @@ export class PptComponent implements OnInit {
   jugadaJugador;
   visibleJuego: boolean;
   visibleResultado: boolean = true;
+  info:string = "";
 
-  constructor() {}
+  constructor(private firebase: FirebaseService) {}
 
   ngOnInit(): void {}
 
@@ -58,13 +60,26 @@ export class PptComponent implements OnInit {
 
   Ganador() {
     if (this.jugadaJugador == this.jugadaMaquina) {
-      console.log("Empate");
+
+      this.info = "Empate!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
+
     } else {
       switch (this.jugadaJugador) {
         case "Piedra":
           if (this.jugadaMaquina == "Tijera") {
+            this.info = "Ganaste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosJugador++;
           } else {
+            this.info = "Perdiste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosMaquina++;
           }
 
@@ -73,8 +88,16 @@ export class PptComponent implements OnInit {
 
         case "Papel":
           if (this.jugadaMaquina == "Piedra") {
+            this.info = "Ganaste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosJugador++;
           } else {
+            this.info = "Perdiste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosMaquina++;
           }
           this.VerificarGanador();
@@ -82,8 +105,16 @@ export class PptComponent implements OnInit {
 
         case "Tijera":
           if (this.jugadaMaquina == "Papel") {
+            this.info = "Ganaste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosJugador++;
           } else {
+            this.info = "Perdiste!";
+      setTimeout(() => {
+      this.info = "";
+     }, 800);
             this.intentosMaquina++;
           }
           this.VerificarGanador();
@@ -95,12 +126,14 @@ export class PptComponent implements OnInit {
   VerificarGanador() {
     if (this.intentosJugador == 3) {
       setTimeout(() => {
+        this.firebase.UsuarioGano("PPT");
         this.mensaje = "¡FELICITACIONES! GANASTE MAQUINA!";
         this.visibleJuego = true;
         this.visibleResultado = false;
       }, 600);
     } else if (this.intentosMaquina == 3) {
       setTimeout(() => {
+        this.firebase.UsuarioPerdio("PPT");
         this.mensaje = "PERDISTE! PICHON";
         this.visibleJuego = true;
         this.visibleResultado = false;

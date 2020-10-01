@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
   selector: "app-mijuego",
   templateUrl: "./mijuego.component.html",
-  styleUrls: ["./mijuego.component.css"],
+  styleUrls: ["./mijuego.component.scss"],
 })
 export class MijuegoComponent implements OnInit {
-
   mazo = this.GetMazo();
 
   //CARTAS ALEATORIAS PARA CADA UNO
@@ -74,7 +75,11 @@ export class MijuegoComponent implements OnInit {
   auxCarta: any;
   JUG_GANA: number = 0;
 
-  constructor() {}
+  //VER
+  mostrarJuego: boolean = true;
+  msjResultado: string = "";
+
+  constructor(private firebase: FirebaseService, private router: Router) {}
 
   ngOnInit(): void {
     /*
@@ -89,7 +94,7 @@ export class MijuegoComponent implements OnInit {
     */
   }
 
-  GetMazo(){
+  GetMazo() {
     return [
       // ORO
       {
@@ -338,6 +343,10 @@ export class MijuegoComponent implements OnInit {
     ];
   }
 
+  Reiniciar() {
+    location.reload();
+  }
+
   Partida(carta?) {
     this.Jugar(carta);
 
@@ -349,7 +358,7 @@ export class MijuegoComponent implements OnInit {
         this.JUG_GANA++;
         this.estadoJUG_RONDA1 = "GANÓ";
         this.estadoNPC_RONDA1 = "PERDIÓ";
-      }else{
+      } else {
         this.estadoJUG_RONDA1 = "PERDIÓ";
         this.estadoNPC_RONDA1 = "GANÓ";
       }
@@ -361,7 +370,7 @@ export class MijuegoComponent implements OnInit {
         this.JUG_GANA++;
         this.estadoJUG_RONDA2 = "GANÓ";
         this.estadoNPC_RONDA2 = "PERDIÓ";
-      }else{
+      } else {
         this.estadoJUG_RONDA2 = "PERDIÓ";
         this.estadoNPC_RONDA2 = "GANÓ";
       }
@@ -373,20 +382,26 @@ export class MijuegoComponent implements OnInit {
         this.JUG_GANA++;
         this.estadoJUG_RONDA3 = "GANÓ";
         this.estadoNPC_RONDA3 = "PERDIÓ";
-      }else{
+      } else {
         this.estadoJUG_RONDA3 = "PERDIÓ";
         this.estadoNPC_RONDA3 = "GANÓ";
       }
 
-      if(this.JUG_GANA > 1){
+      if (this.JUG_GANA > 1) {
         //GANO
-        console.log("GANO");
-      }else{
-        console.log("PERDIO");
+        setTimeout(() => {
+          this.mostrarJuego = false;
+          this.msjResultado = "GANASTE!";
+          this.firebase.UsuarioGano("MiJuego");
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          this.mostrarJuego = false;
+          this.msjResultado = "PERDISTE!";
+          this.firebase.UsuarioPerdio("MiJuego");
+        }, 1500);
       }
     }
-
-
   }
 
   Jugar(carta?) {

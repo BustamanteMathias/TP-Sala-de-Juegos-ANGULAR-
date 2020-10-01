@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
   selector: "app-tateti",
@@ -21,7 +22,7 @@ export class TatetiComponent implements OnInit {
     [0, 0, 0],
   ];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private firebase: FirebaseService) {}
 
   ngOnInit(): void {}
 
@@ -89,47 +90,55 @@ export class TatetiComponent implements OnInit {
       this.celdas[0][2] == 1
     ) {
       retorno = "¡VICTORIA!";
+      this.firebase.UsuarioGano("Tateti");
     } else if (
       this.celdas[1][0] == 1 &&
       this.celdas[1][1] == 1 &&
       this.celdas[1][2] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[2][0] == 1 &&
       this.celdas[2][1] == 1 &&
       this.celdas[2][2] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[0][0] == 1 &&
       this.celdas[1][0] == 1 &&
       this.celdas[2][0] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[0][1] == 1 &&
       this.celdas[1][1] == 1 &&
       this.celdas[2][1] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[0][2] == 1 &&
       this.celdas[1][2] == 1 &&
       this.celdas[2][2] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[0][0] == 1 &&
       this.celdas[1][1] == 1 &&
       this.celdas[2][2] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } else if (
       this.celdas[0][2] == 1 &&
       this.celdas[1][1] == 1 &&
       this.celdas[2][0] == 1
     ) {
+      this.firebase.UsuarioGano("Tateti");
       retorno = "¡VICTORIA!";
     } //JUGADOR
     else if (
@@ -137,48 +146,56 @@ export class TatetiComponent implements OnInit {
       this.celdas[0][1] == 2 &&
       this.celdas[0][2] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[1][0] == 2 &&
       this.celdas[1][1] == 2 &&
       this.celdas[1][2] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[2][0] == 2 &&
       this.celdas[2][1] == 2 &&
       this.celdas[2][2] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[0][0] == 2 &&
       this.celdas[1][0] == 2 &&
       this.celdas[2][0] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[0][1] == 2 &&
       this.celdas[1][1] == 2 &&
       this.celdas[2][1] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[0][2] == 2 &&
       this.celdas[1][2] == 2 &&
       this.celdas[2][2] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[0][0] == 2 &&
       this.celdas[1][1] == 2 &&
       this.celdas[2][2] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } else if (
       this.celdas[0][2] == 2 &&
       this.celdas[1][1] == 2 &&
       this.celdas[2][0] == 2
     ) {
+      this.firebase.UsuarioPerdio("Tateti");
       retorno = "¡DERROTA!";
     } //MAQUINA
 
@@ -213,7 +230,7 @@ export class TatetiComponent implements OnInit {
   }
 
   cambiarResultadoBD() {
-    let flag = false;
+    let flag = true;
 
     for (let usu of this.usuariosTateti) {
       if (usu.usuario == this.usuarioLogueado) {
@@ -224,7 +241,7 @@ export class TatetiComponent implements OnInit {
   }
 
   verificarNuevoTateti() {
-    let flag = false;
+    let flag = true;
 
     for (let usu of this.usuariosTateti) {
       if (usu.usuario == this.usuarioLogueado) {
@@ -248,7 +265,7 @@ export class TatetiComponent implements OnInit {
     }
   }
 
-  modificarExistente(usuario) {
+  modificarExistente(usuario?) {
     if (this.resultado == "¡VICTORIA!") {
       usuario.gano++;
     } else if (this.resultado == "¡DERROTA!") {
@@ -256,7 +273,7 @@ export class TatetiComponent implements OnInit {
     }
   }
 
-  modificarUsuarioPuntaje(usuario) {
+  modificarUsuarioPuntaje(usuario?) {
     if (this.resultado == "¡VICTORIA!") {
       usuario.gano++;
     } else if (this.resultado == "¡DERROTA!") {

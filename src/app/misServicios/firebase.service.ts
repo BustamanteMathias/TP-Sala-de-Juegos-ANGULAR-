@@ -3,6 +3,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { DbUsuarioDetalle } from "../misModelos/db-usuario-detalle";
 import { DbUsuarioGeneral } from "../misModelos/db-usuario-general";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -10,14 +11,27 @@ import { DbUsuarioGeneral } from "../misModelos/db-usuario-general";
 export class FirebaseService {
   listaUsuariosGeneral: AngularFireList<any>;
   listaUsuariosDetalle: AngularFireList<any>;
-  uID: string = "";
+
+  listaDetalle: Observable<any[]>;
+  listaGeneral: Observable<any[]>;
+  listaUsuarios: any[];
+  listaJuegos: any[];
 
   constructor(
     private AFauth: AngularFireAuth,
     private _database: AngularFireDatabase
   ) {
-    this.listaUsuariosGeneral = this.GetUsuariosGeneral();
-    this.listaUsuariosDetalle = this.GetUsuariosDetalle();
+    this.listaDetalle = this._database.list("usuariosDetalle").valueChanges();
+    this.listaDetalle.subscribe(
+      (usuarios) => (this.listaUsuarios = usuarios),
+      (error) => console.log(error)
+    );
+
+    this.listaGeneral = this._database.list("usuariosGeneral").valueChanges();
+    this.listaGeneral.subscribe(
+      (usuarios) => (this.listaJuegos = usuarios),
+      (error) => console.log(error)
+    );
   }
 
   // MANEJADOR BASE DE DATOS USUARIOS
@@ -29,10 +43,10 @@ export class FirebaseService {
     return (this.listaUsuariosGeneral = this._database.list("usuariosGeneral"));
   }
 
-  Insert_UsuarioDetalle(uDetalle: DbUsuarioDetalle) {
+  Insert_UsuarioDetalle(uDetalle: any) {
     this.GetUsuariosDetalle();
 
-    this.listaUsuariosDetalle.push({
+    this.listaUsuariosDetalle.set(uDetalle.userID, {
       userID: uDetalle.userID,
       userEmail: uDetalle.userEmail,
       Gtateti: 0,
@@ -52,10 +66,9 @@ export class FirebaseService {
     });
   }
 
-  Insert_UsuarioGeneral(uGeneral: DbUsuarioGeneral) {
+  Insert_UsuarioGeneral(uGeneral: any) {
     this.GetUsuariosGeneral();
-
-    this.listaUsuariosGeneral.push({
+    this.listaUsuariosGeneral.set(uGeneral.userID, {
       userID: uGeneral.userID,
       userEmail: uGeneral.userEmail,
       tGano: 0,
@@ -63,7 +76,8 @@ export class FirebaseService {
     });
   }
 
-  Update_UsuarioDetalle(uDetalle: DbUsuarioDetalle) {
+  Update_UsuarioDetalle(uDetalle: any) {
+    this.listaUsuariosDetalle = this.GetUsuariosDetalle();
     this.listaUsuariosDetalle.update(uDetalle.userID, {
       Gtateti: uDetalle.Gtateti,
       Ptateti: uDetalle.Ptateti,
@@ -82,7 +96,7 @@ export class FirebaseService {
     });
   }
 
-  Update_UsuarioGeneral(uGeneral: DbUsuarioGeneral) {
+  Update_UsuarioGeneral(uGeneral: any) {
     this.listaUsuariosGeneral = this.GetUsuariosGeneral();
     this.listaUsuariosGeneral.update(uGeneral.userID, {
       tGano: uGeneral.tGano,
@@ -90,13 +104,93 @@ export class FirebaseService {
     });
   }
 
+  UsuarioGano(nombreJuego: string) {
+    let auxDetalle = this.listaUsuarios.filter((u) => u.userID == localStorage.getItem("uID"));
+    let auxGeneral = this.listaJuegos.filter((u) => u.userID == localStorage.getItem("uID"));
+
+    auxGeneral[0].tGano = parseInt(auxGeneral[0].tGano) + 1;
+    this.Update_UsuarioGeneral(auxGeneral[0]);
+
+    switch (nombreJuego) {
+      case "Adivina":
+        auxDetalle[0].Gadivina = parseInt(auxDetalle[0].Gadivina) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Agilidad":
+        auxDetalle[0].Gagilidad = parseInt(auxDetalle[0].Gagilidad) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Anagrama":
+        auxDetalle[0].Ganagrama = parseInt(auxDetalle[0].Ganagrama) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Memotest":
+        auxDetalle[0].Gmemotest = parseInt(auxDetalle[0].Gmemotest) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "PPT":
+        auxDetalle[0].Gppt = parseInt(auxDetalle[0].Gppt) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Tateti":
+        console.log(auxDetalle[0].Gtateti);
+        auxDetalle[0].Gtateti = parseInt(auxDetalle[0].Gtateti) + 1;
+        console.log(auxDetalle[0]);
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "MiJuego":
+        auxDetalle[0].Gmijuego = parseInt(auxDetalle[0].Gmijuego) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+    }
+  }
+
+  UsuarioPerdio(nombreJuego: string) {
+    let auxDetalle = this.listaUsuarios.filter((u) => u.userID == localStorage.getItem("uID"));
+    let auxGeneral = this.listaJuegos.filter((u) => u.userID == localStorage.getItem("uID"));
+
+    auxGeneral[0].tPerdio = parseInt(auxGeneral[0].tPerdio) + 1;
+    this.Update_UsuarioGeneral(auxGeneral[0]);
+
+    switch (nombreJuego) {
+      case "Adivina":
+        auxDetalle[0].Padivina = parseInt(auxDetalle[0].Padivina) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Agilidad":
+        auxDetalle[0].Pagilidad = parseInt(auxDetalle[0].Pagilidad) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Anagrama":
+        auxDetalle[0].Panagrama = parseInt(auxDetalle[0].Panagrama) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Memotest":
+        auxDetalle[0].Pmemotest = parseInt(auxDetalle[0].Pmemotest) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "PPT":
+        auxDetalle[0].Pppt = parseInt(auxDetalle[0].Pppt) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+      case "Tateti":
+        auxDetalle[0].Ptateti = parseInt(auxDetalle[0].Ptateti) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        console.log("entre al perdi");
+        break;
+      case "MiJuego":
+        auxDetalle[0].Pmijuego = parseInt(auxDetalle[0].Pmijuego) + 1;
+        this.Update_UsuarioDetalle(auxDetalle[0]);
+        break;
+    }
+  }
   // FIN MANEJADOR
 
   Login(email: string, password: string) {
     return new Promise((resolve, rejected) => {
       this.AFauth.signInWithEmailAndPassword(email, password).then(
         (response) => {
-          this.uID = response.user.uid;
+          localStorage.setItem("uID", response.user.uid);
           resolve(response);
         },
         (error: any) => {
@@ -112,7 +206,7 @@ export class FirebaseService {
               rejected("Contraseña incorrecta");
               break;
             default:
-              rejected("ERROR");
+              rejected("ERROR" + error);
               break;
           }
         }
@@ -124,7 +218,15 @@ export class FirebaseService {
     return new Promise<any>((resolve, rejected) => {
       this.AFauth.createUserWithEmailAndPassword(email, password).then(
         (response: any) => {
-          this.uID = response.user.uid;
+          localStorage.setItem("uID", response.user.uid);
+          let userGeneral:DbUsuarioGeneral = new DbUsuarioGeneral();
+          userGeneral.userID = response.user.uid;
+          userGeneral.userEmail = email;
+          let userDetalle:DbUsuarioDetalle = new DbUsuarioDetalle();
+          userDetalle.userID = response.user.uid;
+          userDetalle.userEmail = email;
+          this.Insert_UsuarioGeneral(userGeneral);
+          this.Insert_UsuarioDetalle(userDetalle);
           resolve(response);
         },
         (error: any) => {
@@ -142,7 +244,7 @@ export class FirebaseService {
               rejected("Correo existente");
               break;
             default:
-              rejected("ERROR");
+              rejected("ERROR" + error);
               break;
           }
         }

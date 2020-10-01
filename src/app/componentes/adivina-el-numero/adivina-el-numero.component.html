@@ -5,7 +5,7 @@
 <p><input id="resultado" [(ngModel)]="nuevoJuego.numeroIngresado" name="numeroIngresado" type="number"
     style="width:10%" /></p>
 <button mat-fab color="primary" style="width: 250px; height: 250px;" class="b1"><br>
-  <p style="text-align: center; font-size: 7vh;">{{nuevoJuego.numeroIngresado}}<br><br> Actual</p>
+  <p style="text-align: center; font-size: 7vh;">{{nuevoJuego.numeroIngresado}}<br><br>{{ayuda}}</p>
 </button>
 
 <h2 [hidden]="ocultarVerificar">
@@ -17,7 +17,7 @@
 
     <button class="btnIngresarNum" mat-stroked color="primary" *ngIf="nuevoJuego.numeroSecreto==0"
       (click)="generarnumero()">
-      <p>INGRESAR NUMERO</p>
+      <p>COMENZAR JUEGO!</p>
     </button>
 
     <p *ngIf="nuevoJuego.numeroSecreto!=0"><i class="fa fa-spinner fa-spin"></i>Jugando</p>

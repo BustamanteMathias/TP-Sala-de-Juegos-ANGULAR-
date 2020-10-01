@@ -20,9 +20,6 @@ export class TableBasicExampleComponent{
 
 
   constructor(private firebase: FirebaseService) {
-    this.usuario.userID = this.firebase.uID;
-     this.usuario.tGano = 1213;
-     this.usuario.tPerdio = 1892;
 
     this.firebase.GetCurrentUser().then((response) => {
       this.firebase
@@ -33,8 +30,6 @@ export class TableBasicExampleComponent{
             let x = element.payload.toJSON();
 
             if (response.uid == x["userID"]) {
-
-              this.firebase.Update_UsuarioGeneral(this.usuario);
 
               ELEMENT_DATA.push(
                 {

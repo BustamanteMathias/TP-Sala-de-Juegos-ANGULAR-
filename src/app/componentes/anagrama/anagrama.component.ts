@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
+import { FirebaseService } from "../../misServicios/firebase.service";
 @Component({
   selector: "app-anagrama",
   templateUrl: "./anagrama.component.html",
@@ -16,7 +16,7 @@ export class AnagramaComponent implements OnInit {
   usuarioLogueado;
   mensaje: string;
 
-  constructor() {}
+  constructor(private firebase:FirebaseService) {}
 
   ngOnInit() {}
 
@@ -43,10 +43,12 @@ export class AnagramaComponent implements OnInit {
 
   verificar() {
     if (this.palabraIngresada.toLocaleLowerCase() == this.palabraAdivinar) {
+      this.firebase.UsuarioGano("Anagrama");
       this.mostrarMensaje(true, "¡ERA ESA! GENIO...");
       this.gano = true;
     } else {
       this.mostrarMensaje(false, "¡ERROR! ERA " + this.palabraAdivinar);
+      this.firebase.UsuarioPerdio("Anagrama");
       this.gano = false;
     }
   }

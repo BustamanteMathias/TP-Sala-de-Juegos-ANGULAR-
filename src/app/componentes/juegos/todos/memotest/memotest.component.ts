@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
   selector: "app-memotest",
@@ -17,7 +18,7 @@ export class MemotestComponent implements OnInit {
   indexB: number;
   intentos: number;
 
-  constructor() {}
+  constructor(private firebase: FirebaseService) {}
 
   ngOnInit(): void {}
 
@@ -84,12 +85,14 @@ export class MemotestComponent implements OnInit {
   }
 
   jugadorGano() {
+    this.firebase.UsuarioGano("Memotest");
     this.mostrarMensaje = true;
     this.mensaje = "GANASTE!";
     setTimeout(() => this.reiniciar(), 4000);
   }
 
   jugadorPerdio() {
+    this.firebase.UsuarioPerdio("Memotest");
     this.mostrarMensaje = true;
     this.mensaje = "PERDISTE";
     setTimeout(() => this.reiniciar(), 4000);

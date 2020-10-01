@@ -3,6 +3,7 @@ import * as $ from "jquery";
 
 import { Subscription } from "rxjs";
 import { timer } from "rxjs";
+import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
   selector: "app-agilidad",
@@ -16,7 +17,7 @@ export class AgilidadComponent implements OnInit {
   operando: any;
   operador2: any;
 
-  constructor() {
+  constructor(private firebase:FirebaseService) {
     this.juegoParado();
   }
 
@@ -30,7 +31,7 @@ export class AgilidadComponent implements OnInit {
   numeroUno: number;
   numeroDos: number;
   operador: string;
-  operadoradores: string[] = ["-", "+", ":", "x"];
+  operadoradores: string[] = ["-", "+", "x"];
   enviarJuego: EventEmitter<any> = new EventEmitter<any>();
   ocultarVerificar: boolean = true;
   Tiempo: number;
@@ -65,8 +66,8 @@ export class AgilidadComponent implements OnInit {
   generarCalculo() {
     let i = Math.floor(Math.random() * (this.operadoradores.length - 0) + 0);
     this.operador = this.operadoradores[i];
-    this.numeroUno = Math.floor(Math.random() * (100 - 1) + 1);
-    this.numeroDos = Math.floor(Math.random() * (100 - 1) + 1);
+    this.numeroUno = Math.floor(Math.random() * (20 - 1) + 1);
+    this.numeroDos = Math.floor(Math.random() * (20 - 1) + 1);
 
     this.operador1 = this.numeroUno;
     this.operador2 = this.numeroDos;
@@ -112,15 +113,23 @@ export class AgilidadComponent implements OnInit {
 
   mostrarMensaje(gano: boolean) {
     if (gano) {
+      this.firebase.UsuarioGano("Agilidad");
       this.gano = true;
       document.getElementById("mensajeAritmetica").style.background =
         "rgb(40, 216, 63)";
       $("#mensajeAritmetica").text("¡ADIVINASTE,GENIO!");
+      this.operador1 = "";
+      this.operador2 = "";
+      this.operando = "";
     } else {
+      this.firebase.UsuarioPerdio("Agilidad");
       this.gano = false;
       document.getElementById("mensajeAritmetica").style.background =
         "rgb(204, 40, 40)";
       $("#mensajeAritmetica").text("¡ERROR!, NO SOS TAN INTELIGENTE");
+      this.operador1 = "";
+      this.operador2 = "";
+      this.operando = "";
     }
 
     this.fadeIn();
@@ -146,7 +155,7 @@ export class AgilidadComponent implements OnInit {
 
   juegoParado() {
     this.ocultarVerificar = true;
-    this.Tiempo = 10;
+    this.Tiempo = 20;
   }
 
   verificarNuevoAgilidad() {
