@@ -41,6 +41,7 @@ import { AgmCoreModule } from "@agm/core";
 import { InputJugadoresComponent } from "./componentes/input-jugadores/input-jugadores.component";
 import { SexoPipe } from "./pipes/sexo.pipe";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ChatGlobalComponent } from './componentes/chat-global/chat-global.component';
 
 //ANGULAR MATERIAL
 import { MaterialModule } from "./material.module";
@@ -58,6 +59,9 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FirebaseService } from "./misServicios/firebase.service";
+
+import { ChatService } from "./misServicios/chat.service";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBPV6uke49xKWuIdOzxfbIkutaKCQPynI4",
   authDomain: "mabustamante-saladejuegos.firebaseapp.com",
@@ -101,6 +105,7 @@ const firebaseConfig = {
     PptComponent,
     MemotestComponent,
     MijuegoComponent,
+    ChatGlobalComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +128,7 @@ const firebaseConfig = {
     ArchivosJugadoresService,
     JugadoresService,
     FirebaseService,
+    ChatService
   ],
   bootstrap: [AppComponent],
 })
