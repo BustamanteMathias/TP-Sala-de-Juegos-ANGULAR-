@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { ElementRef, Renderer2 } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ApiService } from "../../../../misServicios/api.service";
 import { FirebaseService } from "../../../../misServicios/firebase.service";
 
 @Component({
@@ -18,9 +20,33 @@ export class MemotestComponent implements OnInit {
   indexB: number;
   intentos: number;
 
-  constructor(private firebase: FirebaseService) {}
+  api_imagenes: any = [];
+  @ViewChild("casilla_0") casilla0: ElementRef;
+  @ViewChild("casilla_1") casilla1: ElementRef;
+  @ViewChild("casilla_2") casilla2: ElementRef;
+  @ViewChild("casilla_3") casilla3: ElementRef;
+  @ViewChild("casilla_4") casilla4: ElementRef;
+  @ViewChild("casilla_5") casilla5: ElementRef;
+  @ViewChild("casilla_6") casilla6: ElementRef;
+  @ViewChild("casilla_7") casilla7: ElementRef;
+  @ViewChild("casilla_8") casilla8: ElementRef;
+  @ViewChild("casilla_9") casilla9: ElementRef;
+  @ViewChild("casilla_10") casilla10: ElementRef;
+  @ViewChild("casilla_11") casilla11: ElementRef;
 
-  ngOnInit(): void {}
+  constructor(
+    private firebase: FirebaseService,
+    private api: ApiService,
+    private renderer2: Renderer2
+  ) { }
+
+  ngOnInit(): void {
+    this.api_imagenes = this.api.Get();
+    this.api_imagenes.subscribe((data) => {
+      this.api_imagenes = data;
+      console.log(this.api_imagenes);
+    });
+  }
 
   comenzarJuego() {
     this.comenzar = true;
@@ -41,7 +67,10 @@ export class MemotestComponent implements OnInit {
   jugar(casillero: number) {
     if (!this.mostrar[casillero]) {
       this.mostrar[casillero] = true;
+      this.checkMemotest();
+
       setTimeout(() => {
+
         if (this.tarjetaA == null) {
           this.tarjetaA = this.cuadrados[casillero];
           this.indexA = casillero;
@@ -57,6 +86,84 @@ export class MemotestComponent implements OnInit {
             } else {
               this.mostrar[this.indexA] = false;
               this.mostrar[this.indexB] = false;
+
+              switch (this.indexA) {
+                case 0:
+                  this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "none");
+                  break;
+                case 1:
+                  this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "none");
+                  break;
+                case 2:
+                  this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "none");
+                  break;
+                case 3:
+                  this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "none");
+                  break;
+                case 4:
+                  this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "none");
+                  break;
+                case 5:
+                  this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "none");
+                  break;
+                case 6:
+                  this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "none");
+                  break;
+                case 7:
+                  this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "none");
+                  break;
+                case 8:
+                  this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "none");
+                  break;
+                case 9:
+                  this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "none");
+                  break;
+                case 10:
+                  this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "none");
+                  break;
+                case 11:
+                  this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "none");
+                  break;
+              }
+
+              switch (this.indexB) {
+                case 0:
+                  this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "none");
+                  break;
+                case 1:
+                  this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "none");
+                  break;
+                case 2:
+                  this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "none");
+                  break;
+                case 3:
+                  this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "none");
+                  break;
+                case 4:
+                  this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "none");
+                  break;
+                case 5:
+                  this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "none");
+                  break;
+                case 6:
+                  this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "none");
+                  break;
+                case 7:
+                  this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "none");
+                  break;
+                case 8:
+                  this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "none");
+                  break;
+                case 9:
+                  this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "none");
+                  break;
+                case 10:
+                  this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "none");
+                  break;
+                case 11:
+                  this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "none");
+                  break;
+              }
             }
           }
           this.tarjetaA = null;
@@ -64,6 +171,276 @@ export class MemotestComponent implements OnInit {
         }
       }, 500);
     }
+  }
+
+  checkMemotest() {
+
+    if (this.mostrar[0]) {
+      switch (this.cuadrados[0]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla0.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[1]) {
+      switch (this.cuadrados[1]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla1.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[2]) {
+      switch (this.cuadrados[2]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla2.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[3]) {
+      switch (this.cuadrados[3]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla3.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[4]) {
+      switch (this.cuadrados[4]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla4.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[5]) {
+      switch (this.cuadrados[5]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla5.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[6]) {
+      switch (this.cuadrados[6]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla6.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[7]) {
+      switch (this.cuadrados[7]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla7.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[8]) {
+      switch (this.cuadrados[8]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla8.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[9]) {
+      switch (this.cuadrados[9]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla9.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[10]) {
+      switch (this.cuadrados[10]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla10.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+    if (this.mostrar[11]) {
+      switch (this.cuadrados[11]) {
+        case "0":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][0] + ")");
+          break;
+        case "1":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][1] + ")");
+          break;
+        case "2":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][2] + ")");
+          break;
+        case "3":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][3] + ")");
+          break;
+        case "4":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][4] + ")");
+          break;
+        case "5":
+          this.renderer2.setStyle(this.casilla11.nativeElement, 'background-image', "url(" + this.api_imagenes['message'][5] + ")");
+          break;
+      }
+    }
+
+
   }
 
   ocultar() {

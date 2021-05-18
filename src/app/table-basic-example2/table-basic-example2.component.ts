@@ -26,6 +26,7 @@ export class TableBasicExample2Component implements OnInit {
         this.listaUsuarios = [];
         item.forEach((element) => {
           let x = element.payload.toJSON();
+          console.log(x);
           this.ELEMENT_DATA.push({
             num: (this.contador++).toString(),
             cuenta: x["userEmail"],

@@ -53,6 +53,9 @@ import { AgilidadComponent } from "./componentes/juegos/todos/agilidad/agilidad.
 import { PptComponent } from "./componentes/juegos/todos/ppt/ppt.component";
 import { MemotestComponent } from "./componentes/juegos/todos/memotest/memotest.component";
 import { MijuegoComponent } from "./componentes/juegos/todos/mijuego/mijuego.component";
+import { ListadoJuegoJugadorComponent } from './componentes/listado-juego-jugador/listado-juego-jugador.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { ChatService } from "./misServicios/chat.service";
 
 //FIREBASE
 import { AngularFireDatabaseModule } from "@angular/fire/database";
@@ -60,7 +63,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { FirebaseService } from "./misServicios/firebase.service";
 
-import { ChatService } from "./misServicios/chat.service";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPV6uke49xKWuIdOzxfbIkutaKCQPynI4",
@@ -106,10 +110,13 @@ const firebaseConfig = {
     MemotestComponent,
     MijuegoComponent,
     ChatGlobalComponent,
+    EncuestaComponent,
+    ListadoJuegoJugadorComponent,
   ],
   imports: [
     BrowserModule,
     RuteandoModule,
+    ReactiveFormsModule,
     HttpModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -120,6 +127,7 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [
     JuegoServiceService,

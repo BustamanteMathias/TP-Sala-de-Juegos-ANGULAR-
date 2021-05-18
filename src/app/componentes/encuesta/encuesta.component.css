@@ -1,0 +1,22 @@
+.contenedor{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.63);
+  left: 35vw;
+  top: 15vh;
+  width: 30vw;
+  height: 80vh;
+  border-radius: 1%;
+  border-style: double;
+  border-color: rgb(199, 92, 92);
+  padding: 1%;
+  color: aliceblue;
+}
+
+.inputBox{
+  width: 100%;
+}
+
+.error{
+  color: red;
+  font:bold;
+}

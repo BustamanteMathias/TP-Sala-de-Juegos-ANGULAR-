@@ -6,6 +6,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./grid-list-dynamic.component.css"],
 })
 export class GridListDynamicComponent {
+
+  verEncuesta:boolean = false;
+
   constructor(public route: Router) {}
 
   Ir(ruta: string) {
@@ -39,5 +42,9 @@ export class GridListDynamicComponent {
         this.route.navigate(["/Juegos/MiJuego"]);
         break;
     }
+  }
+
+  Encuesta(){
+    this.verEncuesta = !this.verEncuesta;
   }
 }

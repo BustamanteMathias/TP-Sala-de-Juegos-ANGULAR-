@@ -8,7 +8,7 @@ import { RegistroComponent } from "../componentes/registro/registro.component";
 import { QuienSoyComponent } from "../componentes/quien-soy/quien-soy.component";
 import { JugadoresListadoComponent } from "../componentes/jugadores-listado/jugadores-listado.component";
 import { ChatGlobalComponent } from "../componentes/chat-global/chat-global.component";
-
+import { EncuestaComponent } from "../componentes/encuesta/encuesta.component";
 /**
  *JUEGO
 import { MenuCardComponent } from "../componentes/menu-card/menu-card.component";
@@ -32,6 +32,7 @@ const MiRuteo = [
   { path: "Principal", component: PrincipalComponent },
   { path: "Listado", component: ListadoComponent },
   { path: "Chat", component: ChatGlobalComponent },
+  { path: "Encuesta", component: EncuestaComponent },
   {
     path: "Juegos",
     loadChildren: ()=> import('../modelos/sub-rutas/sub-rutas.module').then(m => m.SubRutasModule)

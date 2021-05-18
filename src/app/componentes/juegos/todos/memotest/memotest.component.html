@@ -7,9 +7,30 @@
 <div class="cnt-memotest">
   <div class="cnt-juego-memotest">
     <div *ngIf="comenzar && !mostrarMensaje" class="cnt-tablero-memotest">
+
+      <button class="casilla_0" (click)="jugar(0)" #casilla_0> </button>
+      <button class="casilla_1" (click)="jugar(1)" #casilla_1> </button>
+      <button class="casilla_2" (click)="jugar(2)" #casilla_2> </button>
+      <button class="casilla_3" (click)="jugar(3)" #casilla_3> </button>
+      <button class="casilla_4" (click)="jugar(4)" #casilla_4> </button>
+      <button class="casilla_5" (click)="jugar(5)" #casilla_5> </button>
+      <button class="casilla_6" (click)="jugar(6)" #casilla_6> </button>
+      <button class="casilla_7" (click)="jugar(7)" #casilla_7> </button>
+      <button class="casilla_8" (click)="jugar(8)" #casilla_8> </button>
+      <button class="casilla_9" (click)="jugar(9)" #casilla_9> </button>
+      <button class="casilla_10" (click)="jugar(10)" #casilla_10> </button>
+      <button class="casilla_11" (click)="jugar(11)" #casilla_11> </button>
+<!--
       <button class="casilla_0"
-        [ngClass]="{f_0: cuadrados[0] == '0' && mostrar[0], f_1: cuadrados[0] == '1' && mostrar[0], f_2: cuadrados[0] == '2' && mostrar[0], f_3: cuadrados[0] == '3' && mostrar[0],f_4: cuadrados[0] == '4' && mostrar[0], f_5: cuadrados[0] == '5' && mostrar[0]}"
+        [ngClass]="{
+          f_0: cuadrados[0] == '0' && mostrar[0],
+          f_1: cuadrados[0] == '1' && mostrar[0],
+          f_2: cuadrados[0] == '2' && mostrar[0],
+          f_3: cuadrados[0] == '3' && mostrar[0],
+          f_4: cuadrados[0] == '4' && mostrar[0],
+          f_5: cuadrados[0] == '5' && mostrar[0]}"
         (click)="jugar(0)"></button>
+
       <button class="casilla_1"
         [ngClass]="{f_0: cuadrados[1] == '0' && mostrar[1], f_1: cuadrados[1] == '1' && mostrar[1], f_2: cuadrados[1] == '2' && mostrar[1], f_3: cuadrados[1] == '3' && mostrar[1],f_4: cuadrados[1] == '4' && mostrar[1], f_5: cuadrados[1] == '5' && mostrar[1]}"
         (click)="jugar(1)"></button>
@@ -41,8 +62,9 @@
         [ngClass]="{f_0: cuadrados[10] == '0' && mostrar[10], f_1: cuadrados[10] == '1' && mostrar[10], f_2: cuadrados[10] == '2' && mostrar[10], f_3: cuadrados[10] == '3' && mostrar[10],f_4: cuadrados[10] == '4' && mostrar[10], f_5: cuadrados[10] == '5' && mostrar[10]}"
         (click)="jugar(10)"></button>
       <button class="casilla_11"
-        [ngClass]="{f_0: cuadrados[11] == '0' && mostrar[11], f_1: cuadrados[11] == '1' && mostrar[111], f_2: cuadrados[11] == '2' && mostrar[11], f_3: cuadrados[11] == '3' && mostrar[11],f_4: cuadrados[11] == '4' && mostrar[11], f_5: cuadrados[11] == '5' && mostrar[11]}"
+        [ngClass]="{f_0: cuadrados[11] == '0' && mostrar[11], f_1: cuadrados[11] == '1' && mostrar[11], f_2: cuadrados[11] == '2' && mostrar[11], f_3: cuadrados[11] == '3' && mostrar[11],f_4: cuadrados[11] == '4' && mostrar[11], f_5: cuadrados[11] == '5' && mostrar[11]}"
         (click)="jugar(11)"></button>
+        -->
     </div>
     <button mat-fab color="primary" *ngIf="!comenzar" (click)="comenzarJuego()" class="btnComenzar"
       style="width: 470px; height: 475px">

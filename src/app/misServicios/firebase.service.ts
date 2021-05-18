@@ -11,11 +11,14 @@ import { Observable } from "rxjs";
 export class FirebaseService {
   listaUsuariosGeneral: AngularFireList<any>;
   listaUsuariosDetalle: AngularFireList<any>;
+  listaUsuariosEncuesta: AngularFireList<any>;
 
   listaDetalle: Observable<any[]>;
   listaGeneral: Observable<any[]>;
+  listaEncuesta: Observable<any[]>;
   listaUsuarios: any[];
   listaJuegos: any[];
+  listaEncuestas: any[];
 
   constructor(
     private AFauth: AngularFireAuth,
@@ -32,6 +35,12 @@ export class FirebaseService {
       (usuarios) => (this.listaJuegos = usuarios),
       (error) => console.log(error)
     );
+
+    this.listaEncuesta = this._database.list("usuariosEncuestas").valueChanges();
+    this.listaEncuesta.subscribe(
+      (usuarios) => (this.listaEncuestas = usuarios),
+      (error) => console.log(error)
+    );
   }
 
   ActualizarListas(){
@@ -44,6 +53,26 @@ export class FirebaseService {
 
   GetUsuariosGeneral() {
     return (this.listaUsuariosGeneral = this._database.list("usuariosGeneral"));
+  }
+
+  GetUsuariosEncuentas() {
+    return (this.listaUsuariosEncuesta = this._database.list("usuariosEncuestas"));
+  }
+
+  Insert_UsuarioEncuesta(encuesta:any) {
+    this.GetUsuariosEncuentas();
+
+    this.listaUsuariosEncuesta.set(localStorage.getItem("uID"), {
+      userID: localStorage.getItem("uID"),
+      correo: encuesta.correo,
+      nombre: encuesta.nombre,
+      apellido: encuesta.apellido,
+      telefono: encuesta.telefono,
+      edad: encuesta.edad,
+      gusto: encuesta.gusto,
+      genero: encuesta.genero,
+      opinion: encuesta.opinion
+    });
   }
 
   Insert_UsuarioDetalle(uDetalle: any) {
@@ -191,6 +220,7 @@ export class FirebaseService {
       this.AFauth.signInWithEmailAndPassword(email, password).then(
         (response) => {
           localStorage.setItem("uID", response.user.uid);
+          localStorage.setItem("uEmail", email);
           resolve(response);
         },
         (error: any) => {
@@ -222,6 +252,7 @@ export class FirebaseService {
           let userGeneral:DbUsuarioGeneral = new DbUsuarioGeneral();
           userGeneral.userID = response.user.uid;
           userGeneral.userEmail = email;
+          localStorage.setItem("uEmail", email);
           let userDetalle:DbUsuarioDetalle = new DbUsuarioDetalle();
           userDetalle.userID = response.user.uid;
           userDetalle.userEmail = email;

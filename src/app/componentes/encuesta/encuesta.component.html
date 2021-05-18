@@ -1,0 +1,157 @@
+<app-cabecera></app-cabecera>
+
+<div class="container">
+  <div class="contenedor">
+
+    <form [formGroup]="form" novalidate (ngSubmit)="Enviar($event)">
+
+      <div class="row">
+
+        <div class="col">
+          <!--- IZQUIERDA -->
+          <p>
+            <strong>NOMBRE</strong> <br/>
+            <input type="text" class="inputBox" formControlName="nombre">
+          </p>
+          <div class="error" *ngIf="form.get('nombre').errors && form.get('nombre').touched">
+            <p *ngIf="form.get('nombre').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>CORREO</strong> <br/>
+            <input type="email" class="inputBox" formControlName="correo">
+          </p>
+          <div class="error" *ngIf="form.get('correo').errors && form.get('correo').touched">
+            <p *ngIf="form.get('correo').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+            <p *ngIf="form.get('correo').hasError('email')">
+              Correo no valido. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>EDAD</strong> <br/>
+            <input type="number" class="inputBox" formControlName="edad"> <br>
+          </p>
+          <div class="error" *ngIf="form.get('edad').errors && form.get('edad').touched">
+            <p *ngIf="form.get('edad').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+            <p *ngIf="form.get('edad').hasError('min')">
+              Minimo 18. <br>
+            </p>
+            <p *ngIf="form.get('edad').hasError('max')">
+              Minimo 99. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>JUEGO QUE MÁS TE GUSTO</strong>
+            <select formControlName="gusto">
+              <option value="PPT">Piedra, Papel o Tijera</option>
+              <option value="TATETI">Tateti</option>
+              <option value="MEMOTEST">Memotest</option>
+              <option value="ESTONOESELTRUCO">Esto no e sel Truco!</option>
+            </select>
+          </p>
+          <div class="error" *ngIf="form.get('gusto').errors && form.get('gusto').touched">
+            <p *ngIf="form.get('gusto').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>GÉNERO</strong> <br/>
+            <input type="radio" name="genero" formControlName="genero" value="M"> MASCULINO <br>
+            <input type="radio" name="genero" formControlName="genero" value="F"> FEMENINO <br>
+            <input type="radio" name="genero" formControlName="genero" value="O"> OTRO
+          </p>
+          <div class="error" *ngIf="form.get('genero').errors && form.get('genero').touched">
+            <p *ngIf="form.get('genero').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>SU OPINIÓN: </strong>
+            <small>{{ this.form.get('opinion').value.length }}/200</small>
+            <textarea cols="30" rows="10" formControlName="opinion"></textarea>
+          </p>
+          <div class="error" *ngIf="form.get('opinion').errors && form.get('opinion').touched">
+            <p *ngIf="form.get('opinion').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+            <p *ngIf="form.get('opinion').hasError('maxlength')">
+              Te pasaste, máximo deben haber 200 caracteres. <br>
+            </p>
+            <p *ngIf="form.get('opinion').hasError('minlength')">
+              Por favor, una opinión minima de 10 caracteres. <br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- DERECHA -->
+          <p>
+            <strong>APELLIDO</strong> <br/>
+            <input type="text" class="inputBox" formControlName="apellido">
+          </p>
+          <div class="error" *ngIf="form.get('apellido').errors && form.get('apellido').touched">
+            <p *ngIf="form.get('apellido').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+          </div>
+
+          <p>
+            <strong>TELÉFONO</strong> <br/>
+            <input type="number" class="inputBox" formControlName="telefono">
+          </p>
+          <div class="error" *ngIf="form.get('telefono').errors && form.get('telefono').touched">
+            <p *ngIf="form.get('telefono').hasError('required')">
+              Es un campo requerido. <br>
+            </p>
+            <p *ngIf="form.get('telefono').hasError('min')">
+              Te pasaste, máximo deben haber 10 caracteres. <br>
+            </p>
+            <p *ngIf="form.get('telefono').hasError('max')">
+              Por favor, una opinión minima de 8 caracteres. <br>
+            </p>
+          </div>
+          <br>
+          <ng-container *ngIf="this.msjsEstadoEnviar != 1; else elseTemplate">
+            <button type="button" (click)='Volver()' class="btn btn-danger" style="width: 100%;">Volver al Menú</button> <br> <br>
+            <button type="submit" class="btn btn-success" style="width: 100%;"><strong>ENVIAR</strong></button>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <button type="submit" disabled class="btn btn-success" style="width: 100%;"><strong>ENVIAR</strong></button>
+            <button type="button" disabled (click)='Volver()' class="btn btn-danger" style="width: 100%;">Volver al Menú</button> <br> <br>
+          </ng-template>
+
+
+          <br><br>
+          <div class="" *ngIf="this.msjsEstadoEnviar == 1">
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+              <div>
+                ENCUESTA ENVIADA! Volviendo a Menú Principal...
+              </div>
+            </div>
+          </div>
+          <div class="" *ngIf="this.msjsEstadoEnviar == 2">
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <div>
+                ERROR. Verifique campos antes de enviar.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class PrincipalComponent implements OnInit {
+
+  verEncuesta:boolean = false;
+
  public status: any = {
     isFirstOpen: true,
     isFirstDisabled: false
@@ -15,6 +18,10 @@ export class PrincipalComponent implements OnInit {
   constructor() {  }
 
   ngOnInit() {
+  }
+
+  Encuesta(){
+    this.verEncuesta = !this.verEncuesta;
   }
 }
 

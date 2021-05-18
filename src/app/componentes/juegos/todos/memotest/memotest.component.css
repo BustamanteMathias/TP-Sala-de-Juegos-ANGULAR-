@@ -89,6 +89,7 @@ h2 {
   background-size: 100% 100%;
   border: 0px;
   background-color: transparent;
+  background-size: 100% 100%;
 }
 
 .casilla_0 {
@@ -166,32 +167,28 @@ h2 {
   background-color: indigo;
 }
 
+/*
 .f_0 {
-  background-image: url("../../../../../assets/imagenes/memo1.png");
-  background-size: 100% 100%;
+  background-image: url("https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg");
 }
 
 .f_1 {
   background-image: url("../../../../../assets/imagenes/memo2.png");
-  background-size: 100% 100%;
 }
 
 .f_2 {
   background-image: url("../../../../../assets/imagenes/memo3.png");
-  background-size: 100% 100%;
 }
 
 .f_3 {
   background-image: url("../../../../../assets/imagenes/memo4.png");
-  background-size: 100% 100%;
 }
 
 .f_4 {
   background-image: url("../../../../../assets/imagenes/memo5.png");
-  background-size: 100% 100%;
 }
 
 .f_5 {
   background-image: url("../../../../../assets/imagenes/memo6.png");
-  background-size: 100% 100%;
 }
+*/

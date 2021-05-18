@@ -26,6 +26,10 @@ export class TatetiComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  Volver(){
+    this.router.navigate(['/Juegos']);
+  }
+
   seleccionarMaquina() {
     let i;
     let x;
